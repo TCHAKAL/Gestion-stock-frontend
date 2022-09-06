@@ -16,3 +16,26 @@ body {
 .min-height-420{
   min-height: 420px;
 }
+.border-right{
+  margin-right: 0!important;
+  border-right: solid #eff2f5 ;
+}
+.custom-border{
+  border: solid #eff2f5 ;
+  border-radius: 3px;
+}
+.blue-color{
+  color: #037bf2;
+}
+.red-color{
+  color: crimson;
+}
+.orange-color{
+  color: goldenrod;
+}
+.a-without-line{
+  font-size: 85% !important;
+  text-decoration: none!important;
+}
+
+
