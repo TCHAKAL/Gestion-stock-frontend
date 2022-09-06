@@ -13,6 +13,7 @@ import { PageArticleComponent } from './pages/articles/page-article/page-article
 import { DetailArticleComponent } from './pages/articles/detail-article/detail-article.component';
 import { PaginationComponent } from './composants/pagination/pagination.component';
 import { BouttonActionComponent } from './composants/boutton-action/boutton-action.component';
+import { NouvelArticleComponent } from './pages/articles/nouvel-article/nouvel-article.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BouttonActionComponent } from './composants/boutton-action/boutton-acti
     PageArticleComponent,
     DetailArticleComponent,
     PaginationComponent,
-    BouttonActionComponent
+    BouttonActionComponent,
+    NouvelArticleComponent
   ],
   imports: [
     BrowserModule,
