@@ -11,6 +11,7 @@ import { MenuComponent } from './composants/menu/menu.component';
 import { HeaderComponent } from './composants/header/header.component';
 import { PageArticleComponent } from './pages/articles/page-article/page-article.component';
 import { DetailArticleComponent } from './pages/articles/detail-article/detail-article.component';
+import { PaginationComponent } from './composants/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DetailArticleComponent } from './pages/articles/detail-article/detail-a
     MenuComponent,
     HeaderComponent,
     PageArticleComponent,
-    DetailArticleComponent
+    DetailArticleComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
