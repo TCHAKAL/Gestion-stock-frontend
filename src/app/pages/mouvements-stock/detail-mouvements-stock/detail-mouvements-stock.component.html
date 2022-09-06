@@ -1,0 +1,72 @@
+<div class="row mb-1 custom-border">
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          <!--  Image du mouvement-->
+          <div class="col-md-2 border-right mr-0 p-1 text-center">
+            <img src="assets/mouvement.png" width="100px" height="100px"/>
+          </div>
+          <!--  Détails du mouvement-->
+          <div class="col-md-4 border-right m-2">
+            <div class="col">
+              <div class="row mt-1">
+                <div class="col-md-1 blue-color"><i class="fas fa-info-circle"></i></div>
+                <div class="col-11">Code article</div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 blue-color"><i class="fas fa-info-circle"></i></div>
+                <div class="col-11">Designation</div>
+              </div>
+              <div class="row">
+                <div class="col col-md-1 blue-color"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <div class="col-11">Prix HT</div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 blue-color"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <div class="col-11">Prix TTC</div>
+              </div>
+            </div>
+          </div>
+          <!--  Détails stock-->
+          <div class="col-md-3 border-right m-0 text-center">
+              <div class="col-md-10">
+                <div class="row mt-4">
+                  <div class="col-md-12">
+                    <h4> Stock actuel </h4>
+                  </div>
+                  <div class="col-md-12 mt-2">
+                    <h4>100</h4>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!--  Bouttons d'actions-->
+          <div class="col-md-2 m-0 mt-4 text-center">
+            <div class="row mt-12">
+              <div class="col-md-12">
+                <button type="button" class="btn btn-link a-without-line">
+                  <i class="fab fa-stack-overflow"></i>
+                  <p>Correction de stock</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+           data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body scroll-list">
+          <app-accordion-detail-mouvements-stock></app-accordion-detail-mouvements-stock>
+          <app-accordion-detail-mouvements-stock></app-accordion-detail-mouvements-stock>
+          <app-accordion-detail-mouvements-stock></app-accordion-detail-mouvements-stock>
+          <app-accordion-detail-mouvements-stock></app-accordion-detail-mouvements-stock>
+          <app-accordion-detail-mouvements-stock></app-accordion-detail-mouvements-stock>
+          <app-accordion-detail-mouvements-stock></app-accordion-detail-mouvements-stock>
+          <app-accordion-detail-mouvements-stock></app-accordion-detail-mouvements-stock>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
