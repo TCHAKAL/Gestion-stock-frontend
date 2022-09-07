@@ -34,6 +34,9 @@ const routes: Routes = [
       {path: 'fournisseurs/nouveau', component: NouveauClientFournisseurComponent},
       {path: 'commandes/clients', component: PageCommandeClientComponent},
       {path: 'commandes/fournisseurs', component: PageCommandeFournisseurComponent},
+
+      // {path: 'commandes/clients/nouveau', component: NouveauClientFournisseurComponent},
+      // {path: 'commandes/fournisseurs/nouveau', component: NouveauClientFournisseurComponent},
     ]
   }
 ];

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -8,13 +8,16 @@ import {Router} from "@angular/router";
 })
 export class BouttonActionComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  @Output()
+  clickEnvent = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  navigate() : void {
-    this.router.navigate(['articles/nouveau']);
+  bouttonNouveauClick() : void {
+    this.clickEnvent.emit();
 }
 
 }
