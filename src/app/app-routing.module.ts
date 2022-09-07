@@ -9,6 +9,9 @@ import {NouvelArticleComponent} from "./pages/articles/nouvel-article/nouvel-art
 import {PageMouvementsStockComponent} from "./pages/mouvements-stock/page-mouvements-stock/page-mouvements-stock.component";
 import {PageClientComponent} from "./pages/client/page-client/page-client.component";
 import {PageFournisseurComponent} from "./pages/fournisseur/page-fournisseur/page-fournisseur.component";
+import {
+  NouveauClientFournisseurComponent
+} from "./composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component";
 
 const routes: Routes = [
   {path: 'login', component: PageLoginComponent},
@@ -22,7 +25,9 @@ const routes: Routes = [
       {path: 'articles/nouveau', component: NouvelArticleComponent},
       {path: 'mouvements', component: PageMouvementsStockComponent},
       {path: 'clients', component: PageClientComponent},
-      {path: 'fournisseur', component: PageFournisseurComponent}
+      {path: 'clients/nouveau', component: NouveauClientFournisseurComponent},
+      {path: 'fournisseurs', component: PageFournisseurComponent},
+      {path: 'fournisseurs/nouveau', component: NouveauClientFournisseurComponent},
     ]
   }
 ];

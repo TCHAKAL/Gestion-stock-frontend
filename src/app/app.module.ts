@@ -21,6 +21,7 @@ import { CorrectionStockComponent } from './pages/mouvements-stock/correction-st
 import { DetailClientFournisseurComponent } from './composants/detail-client-fournisseur/detail-client-fournisseur.component';
 import { PageClientComponent } from './pages/client/page-client/page-client.component';
 import { PageFournisseurComponent } from './pages/fournisseur/page-fournisseur/page-fournisseur.component';
+import { NouveauClientFournisseurComponent } from './composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PageFournisseurComponent } from './pages/fournisseur/page-fournisseur/p
     CorrectionStockComponent,
     DetailClientFournisseurComponent,
     PageClientComponent,
-    PageFournisseurComponent
+    PageFournisseurComponent,
+    NouveauClientFournisseurComponent
   ],
   imports: [
     BrowserModule,
