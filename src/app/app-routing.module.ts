@@ -9,6 +9,7 @@ import {NouvelArticleComponent} from "./pages/articles/nouvel-article/nouvel-art
 import {
   PageMouvementsStockComponent
 } from "./pages/mouvements-stock/page-mouvements-stock/page-mouvements-stock.component";
+import {PageClientComponent} from "./pages/client/page-client/page-client.component";
 
 const routes: Routes = [
   {path: 'login', component: PageLoginComponent},
@@ -20,7 +21,9 @@ const routes: Routes = [
       {path: 'statistiques', component: PageStatistiquesComponent},
       {path: 'articles', component: PageArticleComponent},
       {path: 'articles/nouveau', component: NouvelArticleComponent},
-      {path: 'mouvements', component: PageMouvementsStockComponent}
+      {path: 'mouvements', component: PageMouvementsStockComponent},
+      {path: 'clients', component: PageClientComponent},
+      {path: 'commandes/clients', component: PageMouvementsStockComponent}
     ]
   }
 ];
