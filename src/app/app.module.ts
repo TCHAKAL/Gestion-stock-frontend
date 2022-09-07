@@ -30,6 +30,9 @@ import { NouvelleCommandeClientFournisseurComponent } from './composants/client-
 import { PageCategorieComponent } from './pages/categorie/page-categorie/page-categorie.component';
 import { DetailCategorieComponent } from './pages/categorie/detail-categorie/detail-categorie.component';
 import { NouvelleCategorieComponent } from './pages/categorie/nouvelle-categorie/nouvelle-categorie.component';
+import { PageUtilisateurComponent } from './pages/utilisateur/page-utilisateur/page-utilisateur.component';
+import { DetailUtilisateurComponent } from './pages/utilisateur/detail-utilisateur/detail-utilisateur.component';
+import { NouvelUtilisateurComponent } from './pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,10 @@ import { NouvelleCategorieComponent } from './pages/categorie/nouvelle-categorie
     NouvelleCommandeClientFournisseurComponent,
     PageCategorieComponent,
     DetailCategorieComponent,
-    NouvelleCategorieComponent
+    NouvelleCategorieComponent,
+    PageUtilisateurComponent,
+    DetailUtilisateurComponent,
+    NouvelUtilisateurComponent
   ],
   imports: [
     BrowserModule,

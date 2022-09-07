@@ -21,6 +21,8 @@ import {
 } from "./composants/client-fournisseur/nouvelle-commande-client-fournisseur/nouvelle-commande-client-fournisseur.component";
 import {PageCategorieComponent} from "./pages/categorie/page-categorie/page-categorie.component";
 import {NouvelleCategorieComponent} from "./pages/categorie/nouvelle-categorie/nouvelle-categorie.component";
+import {PageUtilisateurComponent} from "./pages/utilisateur/page-utilisateur/page-utilisateur.component";
+import {NouvelUtilisateurComponent} from "./pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component";
 
 const routes: Routes = [
   {path: 'login', component: PageLoginComponent},
@@ -48,6 +50,9 @@ const routes: Routes = [
 
       {path: 'categories', component: PageCategorieComponent},
       {path: 'categories/nouveau', component: NouvelleCategorieComponent},
+
+      {path: 'utilisateurs', component: PageUtilisateurComponent},
+      {path: 'utilisateurs/nouveau', component: NouvelUtilisateurComponent},
 
     ]
   }
