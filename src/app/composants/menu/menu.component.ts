@@ -100,7 +100,7 @@ export class MenuComponent implements OnInit {
           id: '51',
           titre: 'Catégories',
           icon: 'fa-solid fa-bars-progress',
-          url: '',
+          url: 'categories',
         },
         {
           id: '52',

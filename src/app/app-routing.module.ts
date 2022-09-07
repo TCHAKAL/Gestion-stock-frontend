@@ -19,6 +19,7 @@ import {
 import {
   NouvelleCommandeClientFournisseurComponent
 } from "./composants/client-fournisseur/nouvelle-commande-client-fournisseur/nouvelle-commande-client-fournisseur.component";
+import {PageCategorieComponent} from "./pages/categorie/page-categorie/page-categorie.component";
 
 const routes: Routes = [
   {path: 'login', component: PageLoginComponent},
@@ -28,18 +29,25 @@ const routes: Routes = [
     component: PageDashboardComponent,
     children: [
       {path: 'statistiques', component: PageStatistiquesComponent},
+
       {path: 'articles', component: PageArticleComponent},
       {path: 'articles/nouveau', component: NouvelArticleComponent},
+
       {path: 'mouvements', component: PageMouvementsStockComponent},
+
       {path: 'clients', component: PageClientComponent},
       {path: 'clients/nouveau', component: NouveauClientFournisseurComponent},
+      {path: 'commandes/clients', component: PageCommandeClientComponent},
+      {path: 'commandes/clients/nouveau', component: NouvelleCommandeClientFournisseurComponent},
+
       {path: 'fournisseurs', component: PageFournisseurComponent},
       {path: 'fournisseurs/nouveau', component: NouveauClientFournisseurComponent},
-      {path: 'commandes/clients', component: PageCommandeClientComponent},
       {path: 'commandes/fournisseurs', component: PageCommandeFournisseurComponent},
-
-      {path: 'commandes/clients/nouveau', component: NouvelleCommandeClientFournisseurComponent},
       {path: 'commandes/fournisseurs/nouveau', component: NouvelleCommandeClientFournisseurComponent},
+
+      {path: 'categories', component: PageCategorieComponent},
+      {path: 'categories/nouveau', component: PageCategorieComponent},
+
     ]
   }
 ];

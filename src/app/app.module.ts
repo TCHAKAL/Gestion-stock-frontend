@@ -27,6 +27,8 @@ import { AccordionDetailCommandeClientFournisseurComponent } from './composants/
 import { PageCommandeClientComponent } from './pages/commande-client/page-commande-client/page-commande-client.component';
 import { PageCommandeFournisseurComponent } from './pages/commande-fournisseur/page-commande-fournisseur/page-commande-fournisseur.component';
 import { NouvelleCommandeClientFournisseurComponent } from './composants/client-fournisseur/nouvelle-commande-client-fournisseur/nouvelle-commande-client-fournisseur.component';
+import { PageCategorieComponent } from './pages/categorie/page-categorie/page-categorie.component';
+import { DetailCategorieComponent } from './pages/categorie/detail-categorie/detail-categorie.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { NouvelleCommandeClientFournisseurComponent } from './composants/client-
     AccordionDetailCommandeClientFournisseurComponent,
     PageCommandeClientComponent,
     PageCommandeFournisseurComponent,
-    NouvelleCommandeClientFournisseurComponent
+    NouvelleCommandeClientFournisseurComponent,
+    PageCategorieComponent,
+    DetailCategorieComponent
   ],
   imports: [
     BrowserModule,
