@@ -18,10 +18,13 @@ import { PageMouvementsStockComponent } from './pages/mouvements-stock/page-mouv
 import { DetailMouvementsStockComponent } from './pages/mouvements-stock/detail-mouvements-stock/detail-mouvements-stock.component';
 import { AccordionDetailMouvementsStockComponent } from './pages/mouvements-stock/accordion-detail-mouvements-stock/accordion-detail-mouvements-stock.component';
 import { CorrectionStockComponent } from './pages/mouvements-stock/correction-stock/correction-stock.component';
-import { DetailClientFournisseurComponent } from './composants/detail-client-fournisseur/detail-client-fournisseur.component';
+import { DetailClientFournisseurComponent } from './composants/client-fournisseur/detail-client-fournisseur/detail-client-fournisseur.component';
 import { PageClientComponent } from './pages/client/page-client/page-client.component';
 import { PageFournisseurComponent } from './pages/fournisseur/page-fournisseur/page-fournisseur.component';
-import { NouveauClientFournisseurComponent } from './composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component';
+import { NouveauClientFournisseurComponent } from './composants/client-fournisseur/nouveau-client-fournisseur/nouveau-client-fournisseur.component';
+import { DetailCommandeClientFournisseurComponent } from './composants/client-fournisseur/detail-commande-client-fournisseur/detail-commande-client-fournisseur.component';
+import { AccordionDetailCommandeClientFournisseurComponent } from './composants/client-fournisseur/accordion-detail-commande-client-fournisseur/accordion-detail-commande-client-fournisseur.component';
+import { PageCommandeClientComponent } from './pages/commande-client/page-commande-client/page-commande-client.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { NouveauClientFournisseurComponent } from './composants/nouveau-client-f
     DetailClientFournisseurComponent,
     PageClientComponent,
     PageFournisseurComponent,
-    NouveauClientFournisseurComponent
+    NouveauClientFournisseurComponent,
+    DetailCommandeClientFournisseurComponent,
+    AccordionDetailCommandeClientFournisseurComponent,
+    PageCommandeClientComponent
   ],
   imports: [
     BrowserModule,

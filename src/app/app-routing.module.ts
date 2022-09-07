@@ -11,7 +11,8 @@ import {PageClientComponent} from "./pages/client/page-client/page-client.compon
 import {PageFournisseurComponent} from "./pages/fournisseur/page-fournisseur/page-fournisseur.component";
 import {
   NouveauClientFournisseurComponent
-} from "./composants/nouveau-client-fournisseur/nouveau-client-fournisseur.component";
+} from "./composants/client-fournisseur/nouveau-client-fournisseur/nouveau-client-fournisseur.component";
+import {PageCommandeClientComponent} from "./pages/commande-client/page-commande-client/page-commande-client.component";
 
 const routes: Routes = [
   {path: 'login', component: PageLoginComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
       {path: 'clients/nouveau', component: NouveauClientFournisseurComponent},
       {path: 'fournisseurs', component: PageFournisseurComponent},
       {path: 'fournisseurs/nouveau', component: NouveauClientFournisseurComponent},
+      {path: 'commandes/clients', component: PageCommandeClientComponent},
     ]
   }
 ];
