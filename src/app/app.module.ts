@@ -20,6 +20,7 @@ import { AccordionDetailMouvementsStockComponent } from './pages/mouvements-stoc
 import { CorrectionStockComponent } from './pages/mouvements-stock/correction-stock/correction-stock.component';
 import { DetailClientFournisseurComponent } from './composants/detail-client-fournisseur/detail-client-fournisseur.component';
 import { PageClientComponent } from './pages/client/page-client/page-client.component';
+import { PageFournisseurComponent } from './pages/fournisseur/page-fournisseur/page-fournisseur.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PageClientComponent } from './pages/client/page-client/page-client.comp
     AccordionDetailMouvementsStockComponent,
     CorrectionStockComponent,
     DetailClientFournisseurComponent,
-    PageClientComponent
+    PageClientComponent,
+    PageFournisseurComponent
   ],
   imports: [
     BrowserModule,
