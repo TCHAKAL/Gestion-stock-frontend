@@ -1,0 +1,99 @@
+<div class="col m-2">
+  <div class="col-md-12">
+    <div class="col-md-12 mb-3 ml-4">
+      <h2><i class="fas fa-info-circle blue-color"></i>&nbsp;Nouvelle commande client/fournisseur</h2>
+    </div>
+    <div class="card border-right">
+      <div class="row">
+        <div class="col-md-5 border-right m-0 mt-2">
+          <form>
+            <div class="row mb-3 ml-4">
+              <div class="col-md-11">
+                <input type="text" class="form-control" placeholder="Code commande">
+              </div>
+            </div>
+            <div class="row mb-3 ml-4">
+              <div class="col-md-11">
+                <input type="date" class="form-control" placeholder="Date commande">
+              </div>
+            </div>
+            <div class="row mb-3 ml-4">
+              <div class="col-md-11">
+                <select class="form-select">
+                  <option>TCHAKAL Ahmed</option>
+                  <option>OUDIA Radia</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-5 border-right m-0 mt-2">
+          <div class="mt-2"><i class="fa-solid fa-user"></i>&nbsp; TCHAKAL Ahmed</div>
+          <div class="mt-2"><i class="fa-solid fa-envelope"></i>&nbsp; tchakal.ahmed@gmail.com</div>
+          <div class="mt-2"><i class="fa-solid fa-phone"></i>&nbsp; +213540994713</div>
+          <div class="mt-2"><i class="fa-solid fa-hourglass-start"></i>&nbsp; En préparation</div>
+        </div>
+        <div class="col-md-2 mt-2 text-center">
+          <div class="col-md-2 mr-0 p-1 ">
+            <img src="../../../../assets/product.png" width="165px" height="165px"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-2">
+      <form class="ml-4 mb-2">
+        <div class="row">
+          <div class="col-md-4  m-0 mt-2">
+            <select class="form-select">
+              <option>Article 1</option>
+              <option>Article 2</option>
+              <option>Article 3</option>
+            </select>
+          </div>
+          <div class="col-md-3  m-0 mt-2">
+            <input type="number" placeholder="Quantité" class="form-control">
+          </div>
+          <div class="col-md-3  m-0 mt-2">
+            <input type="number" placeholder="Prix unitaire" class="form-control">
+          </div>
+          <div class="col-md-2  m-0 mt-2 text-center">
+            <button type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card mt-2">
+      <div class="row ml-4">
+        <ul class="list-group list-group-flush scroll-list">
+          <li class="list-group-item">
+            <app-accordion-detail-commande-client-fournisseur></app-accordion-detail-commande-client-fournisseur>
+          </li>
+          <li class="list-group-item">
+            <app-accordion-detail-commande-client-fournisseur></app-accordion-detail-commande-client-fournisseur>
+          </li>
+          <li class="list-group-item">
+            <app-accordion-detail-commande-client-fournisseur></app-accordion-detail-commande-client-fournisseur>
+          </li>
+          <li class="list-group-item">
+            <app-accordion-detail-commande-client-fournisseur></app-accordion-detail-commande-client-fournisseur>
+          </li>
+          <li class="list-group-item">
+            <app-accordion-detail-commande-client-fournisseur></app-accordion-detail-commande-client-fournisseur>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card mt-2">
+      <div class="row">
+        <div class="col-md-11 mt-2 mb-2 text-right">
+          <h4>Total de la commande : 200 000 $</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-4 mr-4 text-right">
+    <button type="button" class="btn btn-primary m-1"><i class="fa-regular fa-floppy-disk"></i>&nbsp;Enregistrer
+    </button>
+    <button type="button" class="btn btn-danger m-1"><i class="fa-solid fa-xmark"></i>&nbsp;Annuler</button>
+  </div>
+</div>

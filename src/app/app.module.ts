@@ -26,6 +26,7 @@ import { DetailCommandeClientFournisseurComponent } from './composants/client-fo
 import { AccordionDetailCommandeClientFournisseurComponent } from './composants/client-fournisseur/accordion-detail-commande-client-fournisseur/accordion-detail-commande-client-fournisseur.component';
 import { PageCommandeClientComponent } from './pages/commande-client/page-commande-client/page-commande-client.component';
 import { PageCommandeFournisseurComponent } from './pages/commande-fournisseur/page-commande-fournisseur/page-commande-fournisseur.component';
+import { NouvelleCommandeClientFournisseurComponent } from './composants/client-fournisseur/nouvelle-commande-client-fournisseur/nouvelle-commande-client-fournisseur.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { PageCommandeFournisseurComponent } from './pages/commande-fournisseur/p
     DetailCommandeClientFournisseurComponent,
     AccordionDetailCommandeClientFournisseurComponent,
     PageCommandeClientComponent,
-    PageCommandeFournisseurComponent
+    PageCommandeFournisseurComponent,
+    NouvelleCommandeClientFournisseurComponent
   ],
   imports: [
     BrowserModule,
