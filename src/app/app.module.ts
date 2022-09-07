@@ -29,6 +29,7 @@ import { PageCommandeFournisseurComponent } from './pages/commande-fournisseur/p
 import { NouvelleCommandeClientFournisseurComponent } from './composants/client-fournisseur/nouvelle-commande-client-fournisseur/nouvelle-commande-client-fournisseur.component';
 import { PageCategorieComponent } from './pages/categorie/page-categorie/page-categorie.component';
 import { DetailCategorieComponent } from './pages/categorie/detail-categorie/detail-categorie.component';
+import { NouvelleCategorieComponent } from './pages/categorie/nouvelle-categorie/nouvelle-categorie.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { DetailCategorieComponent } from './pages/categorie/detail-categorie/det
     PageCommandeFournisseurComponent,
     NouvelleCommandeClientFournisseurComponent,
     PageCategorieComponent,
-    DetailCategorieComponent
+    DetailCategorieComponent,
+    NouvelleCategorieComponent
   ],
   imports: [
     BrowserModule,
