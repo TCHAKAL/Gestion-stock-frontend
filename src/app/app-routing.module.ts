@@ -23,6 +23,8 @@ import {PageCategorieComponent} from "./pages/categorie/page-categorie/page-cate
 import {NouvelleCategorieComponent} from "./pages/categorie/nouvelle-categorie/nouvelle-categorie.component";
 import {PageUtilisateurComponent} from "./pages/utilisateur/page-utilisateur/page-utilisateur.component";
 import {NouvelUtilisateurComponent} from "./pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component";
+import {PageProfilComponent} from "./pages/profil/page-profil/page-profil.component";
+import {ChangerMotPasseComponent} from "./pages/profil/changer-mot-passe/changer-mot-passe.component";
 
 const routes: Routes = [
   {path: 'login', component: PageLoginComponent},
@@ -53,6 +55,9 @@ const routes: Routes = [
 
       {path: 'utilisateurs', component: PageUtilisateurComponent},
       {path: 'utilisateurs/nouveau', component: NouvelUtilisateurComponent},
+
+      {path: 'profil', component: PageProfilComponent},
+      {path: 'profil/changermotpasse', component: ChangerMotPasseComponent},
 
     ]
   }
