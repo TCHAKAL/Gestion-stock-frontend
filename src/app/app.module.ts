@@ -17,6 +17,7 @@ import { NouvelArticleComponent } from './pages/articles/nouvel-article/nouvel-a
 import { PageMouvementsStockComponent } from './pages/mouvements-stock/page-mouvements-stock/page-mouvements-stock.component';
 import { DetailMouvementsStockComponent } from './pages/mouvements-stock/detail-mouvements-stock/detail-mouvements-stock.component';
 import { AccordionDetailMouvementsStockComponent } from './pages/mouvements-stock/accordion-detail-mouvements-stock/accordion-detail-mouvements-stock.component';
+import { CorrectionStockComponent } from './pages/mouvements-stock/correction-stock/correction-stock.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AccordionDetailMouvementsStockComponent } from './pages/mouvements-stoc
     NouvelArticleComponent,
     PageMouvementsStockComponent,
     DetailMouvementsStockComponent,
-    AccordionDetailMouvementsStockComponent
+    AccordionDetailMouvementsStockComponent,
+    CorrectionStockComponent
   ],
   imports: [
     BrowserModule,
