@@ -1,0 +1,78 @@
+<div class="row mb-1 custom-border">
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          <!--  Image du mouvement-->
+          <div class="col-md-2 border-right mr-0 p-1 text-center">
+            <img src="assets/mouvement.png" width="100px" height="100px"/>
+          </div>
+          <!--  Détails client/fournisseur-->
+          <div class="col-md-4 border-right m-2">
+            <div class="col">
+              <div class="row mt-1">
+                <div class="col-md-1 blue-color"><i class="fas fa-info-circle"></i></div>
+                <div class="col-11">Nom</div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 blue-color"><i class="fas fa-info-circle"></i></div>
+                <div class="col-11">Prénom</div>
+              </div>
+              <div class="row">
+                <div class="col col-md-1 blue-color"><i class="fa-solid fa-phone"></i></div>
+                <div class="col-11">+213540994713</div>
+              </div>
+            </div>
+          </div>
+          <!--  Détails commande-->
+          <div class="col-md-4 border-right m-2">
+            <div class="col">
+              <div class="row mt-1">
+                <div class="col-md-1 blue-color"><i class="fa-solid fa-qrcode"></i></div>
+                <div class="col-11">CMD-2022-0001</div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 blue-color"><i class="fa-regular fa-calendar-days blue-color"></i></div>
+                <div class="col-11">07/09/2022</div>
+              </div>
+              <div class="row">
+                <div class="col col-md-1 blue-color"><i class="fa-solid fa-cart-shopping"></i></div>
+                <div class="col-11">Livrée</div>
+              </div>
+            </div>
+          </div>
+          <!--  Bouttons d'actions-->
+          <div class="col-md-2 border-right m-0">
+            <div class="row mt-3">
+              <div class="col-md-4">
+                <button type="button" class="btn btn-link btn-sm a-without-line">
+                  <i class="fa-solid fa-rectangle-list"></i>
+                  <p>Afficher</p>
+                </button>
+              </div>
+              <div class="col-md-4">
+                <button type="button" class="btn btn-link btn-sm a-without-line">
+                  <i class="fa-solid fa-pen-to-square orange-color"></i>
+                  <p class="orange-color">Modifier</p>
+                </button>
+              </div>
+              <div class="col-md-4">
+                <button type="button" class="btn btn-link btn-sm a-without-line">
+                  <i class="fa-solid fa-trash-can red-color"></i>
+                  <p class="red-color">Supprimer</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+           data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body scroll-list">
+          <app-accordion-detail-commande-client-fournisseur></app-accordion-detail-commande-client-fournisseur>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
