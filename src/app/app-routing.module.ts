@@ -43,7 +43,11 @@ const routes: Routes = [
       {path: 'mouvements', component: PageMouvementsStockComponent},
 
       {path: 'clients', component: PageClientComponent},
-      {path: 'clients/nouveau', component: NouveauClientFournisseurComponent},
+      {
+        path: 'clients/nouveau',
+        component: NouveauClientFournisseurComponent,
+        data: {origin: 'client'}
+      },
       {path: 'commandes/clients', component: PageCommandeClientComponent},
       {
         path: 'commandes/clients/nouveau',
@@ -52,7 +56,11 @@ const routes: Routes = [
       },
 
       {path: 'fournisseurs', component: PageFournisseurComponent},
-      {path: 'fournisseurs/nouveau', component: NouveauClientFournisseurComponent},
+      {
+        path: 'fournisseurs/nouveau',
+        component: NouveauClientFournisseurComponent,
+        data: {origin: 'fournisseur'}
+      },
       {path: 'commandes/fournisseurs', component: PageCommandeFournisseurComponent},
       {
         path: 'commandes/fournisseurs/nouveau',
