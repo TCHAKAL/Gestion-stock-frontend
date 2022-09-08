@@ -6,7 +6,9 @@ import {PageDashboardComponent} from "./pages/page-dashboard/page-dashboard.comp
 import {PageStatistiquesComponent} from "./pages/page-statistiques/page-statistiques.component";
 import {PageArticleComponent} from "./pages/articles/page-article/page-article.component";
 import {NouvelArticleComponent} from "./pages/articles/nouvel-article/nouvel-article.component";
-import {PageMouvementsStockComponent} from "./pages/mouvements-stock/page-mouvements-stock/page-mouvements-stock.component";
+import {
+  PageMouvementsStockComponent
+} from "./pages/mouvements-stock/page-mouvements-stock/page-mouvements-stock.component";
 import {PageClientComponent} from "./pages/client/page-client/page-client.component";
 import {PageFournisseurComponent} from "./pages/fournisseur/page-fournisseur/page-fournisseur.component";
 import {
@@ -43,12 +45,20 @@ const routes: Routes = [
       {path: 'clients', component: PageClientComponent},
       {path: 'clients/nouveau', component: NouveauClientFournisseurComponent},
       {path: 'commandes/clients', component: PageCommandeClientComponent},
-      {path: 'commandes/clients/nouveau', component: NouvelleCommandeClientFournisseurComponent},
+      {
+        path: 'commandes/clients/nouveau',
+        component: NouvelleCommandeClientFournisseurComponent,
+        data: {origin: 'client'}
+      },
 
       {path: 'fournisseurs', component: PageFournisseurComponent},
       {path: 'fournisseurs/nouveau', component: NouveauClientFournisseurComponent},
       {path: 'commandes/fournisseurs', component: PageCommandeFournisseurComponent},
-      {path: 'commandes/fournisseurs/nouveau', component: NouvelleCommandeClientFournisseurComponent},
+      {
+        path: 'commandes/fournisseurs/nouveau',
+        component: NouvelleCommandeClientFournisseurComponent,
+        data: {origin: 'fournisseur'}
+      },
 
       {path: 'categories', component: PageCategorieComponent},
       {path: 'categories/nouveau', component: NouvelleCategorieComponent},

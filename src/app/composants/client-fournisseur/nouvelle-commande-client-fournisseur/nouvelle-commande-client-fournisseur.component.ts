@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Data} from "@angular/router";
 
 @Component({
   selector: 'app-nouvelle-commande-client-fournisseur',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nouvelle-commande-client-fournisseur.component.scss']
 })
 export class NouvelleCommandeClientFournisseurComponent implements OnInit {
-
-  constructor() { }
+  origin!:string;
+  constructor(private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(data=>this.origin=data['origin'])
   }
-
 }
