@@ -1,0 +1,1985 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Swagger documentation",
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "Swagger Api documentation de Stock It Easy",
+    "contact" : {
+      "name" : "TCHAKAL Ahmed",
+      "url" : "https://www.linkedin.com/in/ahmed-tchakal/",
+      "email" : "ahmed.tchakal@gmail.com"
+    }
+  },
+  "basePath" : "http://localhost:9090",
+  "tags" : [ {
+    "name" : "stockiteasyarticles"
+  }, {
+    "name" : "stockiteasycategories"
+  }, {
+    "name" : "stockiteasyclients"
+  }, {
+    "name" : "stockiteasycommandeClients"
+  }, {
+    "name" : "stockiteasycommandeFournisseurs"
+  }, {
+    "name" : "stockiteasyentreprises"
+  }, {
+    "name" : "stockiteasymouvements"
+  }, {
+    "name" : "stockiteasyphotos"
+  }, {
+    "name" : "stockiteasyutilisateurs"
+  }, {
+    "name" : "stockiteasyventes"
+  } ],
+  "paths" : {
+    "/stockiteasy/articles/all" : {
+      "get" : {
+        "tags" : [ "stockiteasyarticles" ],
+        "summary" : "Charger la liste des articles",
+        "description" : "Cette méthode permet de renvoyer la liste des articles",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Les articles sont trouvés dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ArticleDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "Les articles ne sont pas trouvés dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/articles/create" : {
+      "post" : {
+        "summary" : "Enregistrer un article (Ajouter / Modifier)",
+        "description" : "Cette méthode permet d'ajouter et de modifier un article",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet article créé / modifié",
+            "schema" : {
+              "$ref" : "#/definitions/ArticleDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/articles/delete/{idArticle}" : {
+      "delete" : {
+        "tags" : [ "stockiteasyarticles" ],
+        "summary" : "Supprimer un article",
+        "description" : "Cette méthode permet de supprimer un article par son ID ",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idArticle",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet article est supprimé de la BDD"
+          },
+          "404" : {
+            "description" : "L'objet article n'est pas supprimé de la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/articles/filter/categorie/{idArticle}" : {
+      "get" : {
+        "operationId" : "findAllByCategorie",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ArticleDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/articles/historique/commandeClient/{idArticle}" : {
+      "get" : {
+        "tags" : [ "stockiteasyarticles" ],
+        "operationId" : "findHistoriqueCommandeClient",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idArticle",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LigneCommandeClientDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/articles/historique/commandeFournisseur/{idArticle}" : {
+      "get" : {
+        "operationId" : "findHistoriqueCommandeFournisseur",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LigneCommandeFournisseurDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/articles/historique/vente/{idArticle}" : {
+      "get" : {
+        "operationId" : "findHistoriqueVente",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LigneVenteDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/articles/{codeArticle}" : {
+      "get" : {
+        "tags" : [ "stockiteasyarticles" ],
+        "summary" : "Rechercher un article avec son code",
+        "description" : "Cette méthode permet de rechercher un article par son code",
+        "operationId" : "findByCode",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "codeArticle",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'article est trouvé dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/ArticleDto"
+            }
+          },
+          "404" : {
+            "description" : "L'article n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/articles/{idArticle}" : {
+      "get" : {
+        "summary" : "Rechercher un article",
+        "description" : "Cette méthode permet de recherhcer un article par son ID ",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet article est trouvé dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/ArticleDto"
+            }
+          },
+          "404" : {
+            "description" : "L'objet article n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/categories/all" : {
+      "get" : {
+        "summary" : "Charger la liste des categories",
+        "description" : "Cette méthode permet de renvoyer la liste des categories",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet categorie est trouvé dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CategorieDto"
+              }
+            }
+          },
+          "403" : {
+            "description" : "Vous pouvez pas acceder a cette ressource  JWT"
+          },
+          "404" : {
+            "description" : "L'objet categorie n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/categories/create" : {
+      "post" : {
+        "tags" : [ "stockiteasycategories" ],
+        "summary" : "Enregistrer une categorie (Ajouter / Modifier)",
+        "description" : "Cette méthode permet d'ajouter et de modifier une categorie",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/CategorieDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet categorie créé / modifié",
+            "schema" : {
+              "$ref" : "#/definitions/CategorieDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/categories/delete/{idCategorie}" : {
+      "delete" : {
+        "tags" : [ "stockiteasycategories" ],
+        "summary" : "Supprimer une categorie",
+        "description" : "Cette méthode permet de supprimer une categorie par son ID ",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idCategorie",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet categorie est supprimé de la BDD"
+          },
+          "404" : {
+            "description" : "L'objet categorie n'est pas supprimé de la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/categories/{codeCategorie}" : {
+      "get" : {
+        "tags" : [ "stockiteasycategories" ],
+        "summary" : "Rechercher une categorie avec son code",
+        "description" : "Cette méthode permet de rechercher une categorie par son code",
+        "operationId" : "findByCode",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "codeCategorie",
+          "in" : "path",
+          "description" : "Le code de catégorie doit etre dans l'un des valeurs suivant [CAT1,CAT2,CAT3] ",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La categorie est trouvé dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/CategorieDto"
+            }
+          },
+          "404" : {
+            "description" : "La categorie n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/categories/{designation}" : {
+      "get" : {
+        "summary" : "Rechercher une categorie avec sa designation",
+        "description" : "Cette méthode permet de rechercher une categorie par sa designation",
+        "operationId" : "findByDesignation",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La catégorie est trouvé dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/CategorieDto"
+            }
+          },
+          "404" : {
+            "description" : "La catégorie n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/categories/{idCategorie}" : {
+      "get" : {
+        "tags" : [ "stockiteasycategories" ],
+        "summary" : "Rechercher une categorie",
+        "description" : "Cette méthode permet de recherhcer une categorie par son ID ",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCategorie",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet categorie est trouvé dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/CategorieDto"
+            }
+          },
+          "404" : {
+            "description" : "L'objet categorie n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/clients" : {
+      "get" : {
+        "tags" : [ "stockiteasyclients" ],
+        "summary" : "Charger la liste des clients",
+        "description" : "Cette méthode permet de charger la liste des clients ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les Utlisateurs sont trouvés dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ClientDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "les Utlisateurs ne sont pas trouvés dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/clients/create" : {
+      "post" : {
+        "tags" : [ "stockiteasyclients" ],
+        "summary" : "Enregistrer un client (Ajouter / Modifier)",
+        "description" : "Cette méthode permet de créer ou modifier un client",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ClientDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est crée/modifié",
+            "schema" : {
+              "$ref" : "#/definitions/ClientDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/clients/delete/{idClient}" : {
+      "delete" : {
+        "tags" : [ "stockiteasyclients" ],
+        "summary" : "Supprimer un client",
+        "description" : "Cette méthode permet de supprimer un client par son ID ",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idClient",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet client est supprimé de la BDD"
+          },
+          "404" : {
+            "description" : "L'objet client n'est pas supprimé de la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/clients/{idClient}" : {
+      "get" : {
+        "tags" : [ "stockiteasyclients" ],
+        "summary" : "Rechercher un client par son id",
+        "description" : "Cette méthode permet de rechercher un client par son id",
+        "operationId" : "findById",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idClient",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est trouvé",
+            "schema" : {
+              "$ref" : "#/definitions/ClientDto"
+            }
+          },
+          "404" : {
+            "description" : "Utlisateur n'est pas trouvé"
+          }
+        }
+      }
+    },
+    "/stockiteasy/clients/{mail}" : {
+      "get" : {
+        "tags" : [ "stockiteasyclients" ],
+        "summary" : "Rechercher un client par mail",
+        "description" : "Cette méthode permet de rechercher un client par son email",
+        "operationId" : "findByMail",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "mail",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est trouvé dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/ClientDto"
+            }
+          },
+          "404" : {
+            "description" : "Utlisateur n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients" : {
+      "get" : {
+        "summary" : "Charger la liste des commandeClients",
+        "description" : "Cette méthode permet de charger la liste des commandeClients ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les commandeClients sont trouvés dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CommandeClientDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "les commandeClients ne sont pas trouvés dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/create" : {
+      "post" : {
+        "tags" : [ "stockiteasycommandeClients" ],
+        "summary" : "Enregistrer une commande client (Ajouter / Modifier)",
+        "description" : "Cette méthode permet de créer ou modifier une commande client",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/CommandeClientDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "commandeClient est créée/modifiée",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeClientDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/delete/article/{idCommande}/{idLigneCommmande}" : {
+      "delete" : {
+        "summary" : "Supprimer une ligne commande client",
+        "description" : "Cette méthode permet de supprimer une ligne commande client",
+        "operationId" : "deleteArticle",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La ligne commande client est supprimée",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeClientDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/delete/{idCommande}" : {
+      "delete" : {
+        "summary" : "Supprimer une commande client",
+        "description" : "Cette méthode permet de supprimer une commande client par son ID ",
+        "operationId" : "delete",
+        "responses" : {
+          "200" : {
+            "description" : "L'objet commandeClient est supprimé de la BDD"
+          },
+          "404" : {
+            "description" : "L'objet commandeClient n'est pas supprimé de la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/lignesCommande/{idCommande}" : {
+      "get" : {
+        "summary" : "Charger la liste des lignes commande clients avec id de la commande",
+        "description" : "Cette méthode permet de charger la liste des lignes commande clients avec id de la commande",
+        "operationId" : "findAllLigneCommandeClientByCommandeClientId",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les lignes commande clients sont trouvées dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LigneCommandeClientDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "les lignes commande clients  ne sont pas trouvées dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/update/article/{idCommande}/{idLigneCommmande}/{idArticle}" : {
+      "patch" : {
+        "tags" : [ "stockiteasycommandeClients" ],
+        "summary" : "Mis à jour l'article d'une ligne commande client",
+        "description" : "Cette méthode permet de modifier l'article d'une ligne commande client",
+        "operationId" : "updateArticle",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idLigneCommmande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idArticle",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "l'article de ligne commande client est modifié",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeClientDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/update/client/{idCommande}/{idClient}" : {
+      "patch" : {
+        "summary" : "Mis à jour le client d'une ligne commande client",
+        "description" : "Cette méthode permet de modifier le client d'une ligne commande client",
+        "operationId" : "updateClient",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le client de la commande client est modifié",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeClientDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/update/etat/{idCommande}/{etatCommande}" : {
+      "patch" : {
+        "tags" : [ "stockiteasycommandeClients" ],
+        "summary" : "Mis à jour l'etat d'une commande client",
+        "description" : "Cette méthode permet de modifier l'état d'une commande client",
+        "operationId" : "updateEtatCommande",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "etatCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "EN_PREPARATION", "VALIDEE", "LIVREE" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'état de la commande client est modifiée",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeClientDto"
+            }
+          },
+          "404" : {
+            "description" : "La commande client n'est pas trouvée"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/update/quantite/{idCommande}/{idLigneCommande}/{quantite}" : {
+      "patch" : {
+        "tags" : [ "stockiteasycommandeClients" ],
+        "summary" : "Mis à jour la quantite d'une ligne commande client",
+        "description" : "Cette méthode permet de modifier la quantite d'une ligne commande client",
+        "operationId" : "updateQuantite",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idLigneCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "quantite",
+          "in" : "path",
+          "required" : true,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La ligne de la commande client est modifiée",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeClientDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeClients/{idCommandeClient}" : {
+      "get" : {
+        "summary" : "Rechercher une commande client par son id",
+        "description" : "Cette méthode permet de rechercher une commande client par son id",
+        "operationId" : "findById",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "commandeClient est trouvé",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeClientDto"
+            }
+          },
+          "404" : {
+            "description" : "commandeClient n'est pas trouvé"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs" : {
+      "get" : {
+        "summary" : "Charger la liste des commandeFournisseurs",
+        "description" : "Cette méthode permet de charger la liste des commandeFournisseurs ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les commandeFournisseurs sont trouvés dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CommandeFournisseurDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "les commandeFournisseurs ne sont pas trouvés dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/create" : {
+      "post" : {
+        "tags" : [ "stockiteasycommandeFournisseurs" ],
+        "summary" : "Enregistrer une commande fournisseur (Ajouter / Modifier)",
+        "description" : "Cette méthode permet de créer ou modifier une commande fournisseur",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/CommandeFournisseurDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "commandeFournisseur est créée/modifiée",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeFournisseurDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/delete/article/{idCommande}/{idLigneCommmande}" : {
+      "delete" : {
+        "tags" : [ "stockiteasycommandeFournisseurs" ],
+        "summary" : "Supprimer une ligne commande fournisseur",
+        "description" : "Cette méthode permet de supprimer une ligne commande fournisseur",
+        "operationId" : "deleteArticle",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idLigneCommmande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La ligne commande fournisseur est supprimée",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeFournisseurDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/delete/{idCommande}" : {
+      "delete" : {
+        "summary" : "Supprimer une commande fournisseur",
+        "description" : "Cette méthode permet de supprimer une commande fournisseur par son ID ",
+        "operationId" : "delete",
+        "responses" : {
+          "200" : {
+            "description" : "L'objet commandeFournisseur est supprimé de la BDD"
+          },
+          "404" : {
+            "description" : "L'objet commandeFournisseur n'est pas supprimé de la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/lignesCommande/{idCommande}" : {
+      "get" : {
+        "summary" : "Charger la liste des lignes commande fournisseurs avec id de la commande",
+        "description" : "Cette méthode permet de charger la liste des lignes commande fournisseurs avec id de la commande",
+        "operationId" : "findAllLigneCommandeFournisseurByCommandeFournisseurId",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les lignes commande fournisseurs sont trouvées dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LigneCommandeFournisseurDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "les lignes commande fournisseurs  ne sont pas trouvées dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/update/article/{idCommande}/{idLigneCommmande}/{idArticle}" : {
+      "patch" : {
+        "tags" : [ "stockiteasycommandeFournisseurs" ],
+        "summary" : "Mis à jour l'article d'une ligne commande fournisseur",
+        "description" : "Cette méthode permet de modifier l'article d'une ligne commande fournisseur",
+        "operationId" : "updateArticle",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idLigneCommmande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idArticle",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "l'article de ligne commande fournisseur est modifié",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeFournisseurDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/update/etat/{idCommande}/{etatCommande}" : {
+      "patch" : {
+        "tags" : [ "stockiteasycommandeFournisseurs" ],
+        "summary" : "Mis à jour l'etat d'une commande fournisseur",
+        "description" : "Cette méthode permet de modifier l'état d'une commande fournisseur",
+        "operationId" : "updateEtatCommande",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "etatCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "EN_PREPARATION", "VALIDEE", "LIVREE" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'état de la commande fournisseur est modifiée",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeFournisseurDto"
+            }
+          },
+          "404" : {
+            "description" : "La commande fournisseur n'est pas trouvée"
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/update/fournisseur/{idCommande}/{idFournisseur}" : {
+      "patch" : {
+        "summary" : "Mis à jour le fournisseur d'une ligne commande fournisseur",
+        "description" : "Cette méthode permet de modifier le fournisseur d'une ligne commande fournisseur",
+        "operationId" : "updateFournisseur",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le fournisseur de la commande fournisseur est modifié",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeFournisseurDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/update/quantite/{idCommande}/{idLigneCommande}/{quantite}" : {
+      "patch" : {
+        "tags" : [ "stockiteasycommandeFournisseurs" ],
+        "summary" : "Mis à jour la quantite d'une ligne commande fournisseur",
+        "description" : "Cette méthode permet de modifier la quantite d'une ligne commande fournisseur",
+        "operationId" : "updateQuantite",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idLigneCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "quantite",
+          "in" : "path",
+          "required" : true,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La ligne de la commande fournisseur est modifiée",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeFournisseurDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/commandeFournisseurs/{idCommandeFournisseur}" : {
+      "get" : {
+        "tags" : [ "stockiteasycommandeFournisseurs" ],
+        "summary" : "Rechercher une commande fournisseur par son id",
+        "description" : "Cette méthode permet de rechercher une commande fournisseur par son id",
+        "operationId" : "findById",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommandeFournisseur",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "commandeFournisseur est trouvé",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeFournisseurDto"
+            }
+          },
+          "404" : {
+            "description" : "commandeFournisseur n'est pas trouvé"
+          }
+        }
+      }
+    },
+    "/stockiteasy/entreprises" : {
+      "get" : {
+        "operationId" : "findAll",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/EntrepriseDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/entreprises/create" : {
+      "post" : {
+        "tags" : [ "stockiteasyentreprises" ],
+        "operationId" : "save",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/EntrepriseDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/entreprises/delete/{idEntreprise}" : {
+      "delete" : {
+        "operationId" : "delete",
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/stockiteasy/entreprises/{idEntreprise}" : {
+      "get" : {
+        "tags" : [ "stockiteasyentreprises" ],
+        "operationId" : "findById",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/EntrepriseDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/entreprises/{nomEntreprise}" : {
+      "get" : {
+        "tags" : [ "stockiteasyentreprises" ],
+        "operationId" : "findByNom",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/EntrepriseDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/fournisseurs" : {
+      "get" : {
+        "tags" : [ "stockiteasyentreprises" ],
+        "summary" : "Charger la liste des fournisseurs",
+        "description" : "Cette méthode permet de charger la liste des fournisseurs ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les Utlisateurs sont trouvés dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/FournisseurDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "les Utlisateurs ne sont pas trouvés dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/fournisseurs/create" : {
+      "post" : {
+        "summary" : "Enregistrer un fournisseur (Ajouter / Modifier)",
+        "description" : "Cette méthode permet de créer ou modifier un fournisseur",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est crée/modifié",
+            "schema" : {
+              "$ref" : "#/definitions/FournisseurDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/fournisseurs/delete/{idFournisseur}" : {
+      "delete" : {
+        "tags" : [ "stockiteasyentreprises" ],
+        "summary" : "Supprimer un fournisseur",
+        "description" : "Cette méthode permet de supprimer un fournisseur par son ID ",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "idFournisseur",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet fournisseur est supprimé de la BDD"
+          },
+          "404" : {
+            "description" : "L'objet fournisseur n'est pas supprimé de la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/fournisseurs/{idFournisseur}" : {
+      "get" : {
+        "summary" : "Rechercher un fournisseur par son id",
+        "description" : "Cette méthode permet de rechercher un fournisseur par son id",
+        "operationId" : "findById",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est trouvé",
+            "schema" : {
+              "$ref" : "#/definitions/FournisseurDto"
+            }
+          },
+          "404" : {
+            "description" : "Utlisateur n'est pas trouvé"
+          }
+        }
+      }
+    },
+    "/stockiteasy/fournisseurs/{mail}" : {
+      "get" : {
+        "tags" : [ "stockiteasyentreprises" ],
+        "summary" : "Rechercher un fournisseur par mail",
+        "description" : "Cette méthode permet de rechercher un fournisseur par son email",
+        "operationId" : "findByMail",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "mail",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est trouvé dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/FournisseurDto"
+            }
+          },
+          "404" : {
+            "description" : "Utlisateur n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/mouvements/filter/article/{idArticle}" : {
+      "get" : {
+        "operationId" : "findAllByArticleId",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MvtStockDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/mouvements/stockreel/correction/negative" : {
+      "get" : {
+        "operationId" : "correctionStockNegative",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStockDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/mouvements/stockreel/correction/positive" : {
+      "get" : {
+        "tags" : [ "stockiteasymouvements" ],
+        "operationId" : "correctionStockPositive",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MvtStockDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStockDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/mouvements/stockreel/entree" : {
+      "get" : {
+        "tags" : [ "stockiteasymouvements" ],
+        "operationId" : "entreeStock",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MvtStockDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStockDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/mouvements/stockreel/sortie" : {
+      "get" : {
+        "tags" : [ "stockiteasymouvements" ],
+        "operationId" : "sortieStock",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/MvtStockDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStockDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/mouvements/stockreel/{idArticle}" : {
+      "get" : {
+        "operationId" : "stockReelArticle",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "number"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/photos/{id}/{titre}/{context}" : {
+      "post" : {
+        "operationId" : "savePhoto",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/utilisateurs" : {
+      "get" : {
+        "summary" : "Charger la liste des utilisateurs",
+        "description" : "Cette méthode permet de charger la liste des utilisateurs ",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "les Utlisateurs sont trouvés dans la BDD",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/UtilisateurDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "les Utlisateurs ne sont pas trouvés dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/utilisateurs/create" : {
+      "post" : {
+        "summary" : "Enregistrer un utilisateur (Ajouter / Modifier)",
+        "description" : "Cette méthode permet de créer ou modifier un utilisateur",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est crée/modifié",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/utilisateurs/delete/{idFournisseur}" : {
+      "delete" : {
+        "summary" : "Supprimer un utilisateur",
+        "description" : "Cette méthode permet de supprimer un utilisateur par son ID ",
+        "operationId" : "delete",
+        "responses" : {
+          "200" : {
+            "description" : "L'objet utilisateur est supprimé de la BDD"
+          },
+          "404" : {
+            "description" : "L'objet utilisateur n'est pas supprimé de la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/utilisateurs/{idFournisseur}" : {
+      "get" : {
+        "tags" : [ "stockiteasyutilisateurs" ],
+        "summary" : "Rechercher un utilisateur",
+        "description" : "Cette méthode permet de rechercher un utilisateur par son id",
+        "operationId" : "findById",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idUtilisateur",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est trouvé",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "404" : {
+            "description" : "Utlisateur n'est pas trouvé"
+          }
+        }
+      }
+    },
+    "/stockiteasy/utilisateurs/{mail}" : {
+      "get" : {
+        "summary" : "Rechercher un utilisateur",
+        "description" : "Cette méthode permet de rechercher un utilisateur par son email et mot de passe",
+        "operationId" : "findByEmailAndMotPasse",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Utlisateur est trouvé dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "404" : {
+            "description" : "Utlisateur n'est pas trouvé dans la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/ventes" : {
+      "get" : {
+        "tags" : [ "stockiteasyventes" ],
+        "summary" : "Charger la liste des ventes",
+        "description" : "Cette méthode permet de charger la liste des ventes",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Les ventes sont trouvées",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "404" : {
+            "description" : "Les ventes ne sont pas trouvées"
+          }
+        }
+      }
+    },
+    "/stockiteasy/ventes/create" : {
+      "post" : {
+        "summary" : "Enregistrer une vente (Ajouter / Modifier)",
+        "description" : "Cette méthode permet de créer ou modifier une vente",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La vente est créée/modifiée",
+            "schema" : {
+              "$ref" : "#/definitions/FournisseurDto"
+            }
+          }
+        }
+      }
+    },
+    "/stockiteasy/ventes/delete/{idVente}" : {
+      "delete" : {
+        "summary" : "Supprimer une vente",
+        "description" : "Cette méthode permet de supprimer une vente par son ID ",
+        "operationId" : "delete",
+        "responses" : {
+          "200" : {
+            "description" : "L'objet vente est supprimé de la BDD"
+          },
+          "404" : {
+            "description" : "L'objet vente n'est pas supprimé de la BDD"
+          }
+        }
+      }
+    },
+    "/stockiteasy/ventes/{codeVente}" : {
+      "get" : {
+        "summary" : "Rechercher une vente avec le code",
+        "description" : "Cette méthode permet de rechercher une vente par son code",
+        "operationId" : "findByCode",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La vente est trouvée",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "404" : {
+            "description" : "La vente n'est pas trouvée"
+          }
+        }
+      }
+    },
+    "/stockiteasy/ventes/{dateVente}" : {
+      "get" : {
+        "tags" : [ "stockiteasyventes" ],
+        "summary" : "Rechercher une vente avec la date vente",
+        "description" : "Cette méthode permet de rechercher une vente par sa date de vente",
+        "operationId" : "findByDateVente",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "dateVente",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La vente est trouvée",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "404" : {
+            "description" : "La vente n'est pas trouvée"
+          }
+        }
+      }
+    },
+    "/stockiteasy/ventes/{idVente}" : {
+      "get" : {
+        "summary" : "Rechercher une vente",
+        "description" : "Cette méthode permet de rechercher une vente par son id",
+        "operationId" : "findById",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La vente est trouvée",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "404" : {
+            "description" : "La vente n'est pas trouvée"
+          }
+        }
+      }
+    },
+    "stockiteasy/authentication/authenticate" : {
+      "post" : {
+        "operationId" : "authenticate",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AuthenticationRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AuthenticationResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AdresseDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "adresse1" : {
+          "type" : "string"
+        },
+        "adresse2" : {
+          "type" : "string"
+        },
+        "ville" : {
+          "type" : "string"
+        },
+        "codePostale" : {
+          "type" : "string"
+        },
+        "pays" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ArticleDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "designation" : {
+          "type" : "string"
+        },
+        "prixUnitaireHt" : {
+          "type" : "number"
+        },
+        "prixUnitaireTtc" : {
+          "type" : "number"
+        },
+        "tauxTva" : {
+          "type" : "number"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "categorie" : {
+          "$ref" : "#/definitions/CategorieDto"
+        },
+        "idEntreprise" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "AuthenticationRequest" : {
+      "type" : "object",
+      "properties" : {
+        "email" : {
+          "type" : "string"
+        },
+        "motPasse" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AuthenticationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "jwtAccessToken" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CategorieDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "designation" : {
+          "type" : "string"
+        },
+        "idEntreprise" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "ClientDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "idEntreprise" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "mail" : {
+          "type" : "string"
+        },
+        "telephone" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/AdresseDto"
+        },
+        "photo" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CommandeClientDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "dateCommande" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "etatCommande" : {
+          "type" : "string",
+          "enum" : [ "EN_PREPARATION", "VALIDEE", "LIVREE" ]
+        },
+        "client" : {
+          "$ref" : "#/definitions/ClientDto"
+        },
+        "idEntreprise" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "commandeLivree" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "CommandeFournisseurDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "dateCommande" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "etatCommande" : {
+          "type" : "string",
+          "enum" : [ "EN_PREPARATION", "VALIDEE", "LIVREE" ]
+        },
+        "fournisseur" : {
+          "$ref" : "#/definitions/FournisseurDto"
+        },
+        "idEntreprise" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "commandeLivree" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "EntrepriseDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "codeFiscal" : {
+          "type" : "string"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/AdresseDto"
+        },
+        "telephone" : {
+          "type" : "string"
+        },
+        "siteWeb" : {
+          "type" : "string"
+        }
+      }
+    },
+    "FournisseurDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "mail" : {
+          "type" : "string"
+        },
+        "telephone" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/AdresseDto"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "idEntreprise" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "commandeFournisseurs" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/CommandeFournisseurDto"
+          }
+        }
+      }
+    },
+    "LigneCommandeClientDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "article" : {
+          "$ref" : "#/definitions/ArticleDto"
+        },
+        "commandeClient" : {
+          "$ref" : "#/definitions/CommandeClientDto"
+        },
+        "quantite" : {
+          "type" : "number"
+        },
+        "prixUnitaire" : {
+          "type" : "number"
+        }
+      }
+    },
+    "LigneCommandeFournisseurDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "article" : {
+          "$ref" : "#/definitions/ArticleDto"
+        },
+        "commandeFournisseur" : {
+          "$ref" : "#/definitions/CommandeFournisseurDto"
+        },
+        "quantite" : {
+          "type" : "number"
+        },
+        "prixUnitaire" : {
+          "type" : "number"
+        }
+      }
+    },
+    "LigneVenteDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "vente" : {
+          "$ref" : "#/definitions/VenteDto"
+        },
+        "quantite" : {
+          "type" : "number"
+        },
+        "article" : {
+          "$ref" : "#/definitions/ArticleDto"
+        }
+      }
+    },
+    "MvtStockDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "article" : {
+          "$ref" : "#/definitions/ArticleDto"
+        },
+        "quantite" : {
+          "type" : "number"
+        },
+        "dateMvt" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "typeMvt" : {
+          "type" : "string",
+          "enum" : [ "ENTREE", "SORTIE", "CORRECTION_POSITIVE", "CORRECTION_NEGATIVE" ]
+        },
+        "sourceMvtStock" : {
+          "type" : "string",
+          "enum" : [ "COMMANDE_CLIENT", "COMMANDE_FOURNISSEUR", "VENTE" ]
+        },
+        "idEntreprise" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "RoleDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "roleName" : {
+          "type" : "string"
+        },
+        "utilisateur" : {
+          "$ref" : "#/definitions/UtilisateurDto"
+        }
+      }
+    },
+    "UtilisateurDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "dateNaissance" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "motPasse" : {
+          "type" : "string"
+        },
+        "adresse" : {
+          "$ref" : "#/definitions/AdresseDto"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "entreprise" : {
+          "$ref" : "#/definitions/EntrepriseDto"
+        },
+        "roles" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RoleDto"
+          }
+        }
+      }
+    },
+    "VenteDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "dateVente" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "commentaire" : {
+          "type" : "string"
+        },
+        "idEntreprise" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "ligneVente" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/LigneVenteDto"
+          }
+        }
+      }
+    }
+  }
+}
