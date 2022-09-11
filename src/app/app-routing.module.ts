@@ -27,7 +27,7 @@ import {PageUtilisateurComponent} from "./pages/utilisateur/page-utilisateur/pag
 import {NouvelUtilisateurComponent} from "./pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component";
 import {PageProfilComponent} from "./pages/profil/page-profil/page-profil.component";
 import {ChangerMotPasseComponent} from "./pages/profil/changer-mot-passe/changer-mot-passe.component";
-import {ApplicationGuardService} from "./services/application-guard.service";
+import {ApplicationGuardService} from "./services/guards/application-guard.service";
 
 const routes: Routes = [
   {path: 'login', component: PageLoginComponent},
@@ -35,7 +35,6 @@ const routes: Routes = [
   {
     path: '',
     component: PageDashboardComponent,
-    canActivate: [ApplicationGuardService],
     children: [
       {
         path: 'statistiques',
@@ -138,7 +137,6 @@ const routes: Routes = [
         path: 'profil/changermotpasse', component: ChangerMotPasseComponent,
         canActivate: [ApplicationGuardService]
       },
-
     ]
   }
 ];

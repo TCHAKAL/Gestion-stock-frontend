@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApplicationGuardService } from './application-guard.service';
+import { ApplicationGuardService } from './guards/application-guard.service';
 
 describe('ApplicationGuardService', () => {
   let service: ApplicationGuardService;
