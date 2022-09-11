@@ -27,6 +27,7 @@ import {PageUtilisateurComponent} from "./pages/utilisateur/page-utilisateur/pag
 import {NouvelUtilisateurComponent} from "./pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component";
 import {PageProfilComponent} from "./pages/profil/page-profil/page-profil.component";
 import {ChangerMotPasseComponent} from "./pages/profil/changer-mot-passe/changer-mot-passe.component";
+import {ApplicationGuardService} from "./services/application-guard.service";
 
 const routes: Routes = [
   {path: 'login', component: PageLoginComponent},
@@ -34,48 +35,109 @@ const routes: Routes = [
   {
     path: '',
     component: PageDashboardComponent,
+    canActivate: [ApplicationGuardService],
     children: [
-      {path: 'statistiques', component: PageStatistiquesComponent},
+      {
+        path: 'statistiques',
+        component: PageStatistiquesComponent,
+        canActivate: [ApplicationGuardService]
+      },
+      {
+        path: 'articles',
+        component: PageArticleComponent,
+        canActivate: [ApplicationGuardService]
+      },
+      {
+        path: 'articles/nouveau',
+        component: NouvelArticleComponent,
+        canActivate: [ApplicationGuardService]
+      },
 
-      {path: 'articles', component: PageArticleComponent},
-      {path: 'articles/nouveau', component: NouvelArticleComponent},
+      {
+        path: 'mouvements',
+        component: PageMouvementsStockComponent,
+        canActivate: [ApplicationGuardService]
+      },
 
-      {path: 'mouvements', component: PageMouvementsStockComponent},
-
-      {path: 'clients', component: PageClientComponent},
+      {
+        path: 'clients',
+        component: PageClientComponent,
+        canActivate: [ApplicationGuardService]
+      },
       {
         path: 'clients/nouveau',
         component: NouveauClientFournisseurComponent,
-        data: {origin: 'client'}
+        data: {origin: 'client'},
+        canActivate: [ApplicationGuardService]
       },
-      {path: 'commandes/clients', component: PageCommandeClientComponent},
+      {
+        path: 'commandes/clients',
+        component: PageCommandeClientComponent,
+        canActivate: [ApplicationGuardService]
+      },
       {
         path: 'commandes/clients/nouveau',
         component: NouvelleCommandeClientFournisseurComponent,
-        data: {origin: 'client'}
+        data: {origin: 'client'},
+        canActivate: [ApplicationGuardService]
       },
 
-      {path: 'fournisseurs', component: PageFournisseurComponent},
+      {
+        path: 'fournisseurs',
+        component: PageFournisseurComponent,
+        canActivate: [ApplicationGuardService]
+      },
       {
         path: 'fournisseurs/nouveau',
         component: NouveauClientFournisseurComponent,
-        data: {origin: 'fournisseur'}
+        data: {
+          origin: 'fournisseur'
+
+        },
+        canActivate: [ApplicationGuardService]
       },
-      {path: 'commandes/fournisseurs', component: PageCommandeFournisseurComponent},
+      {
+        path: 'commandes/fournisseurs',
+        component: PageCommandeFournisseurComponent,
+        canActivate: [ApplicationGuardService]
+      },
       {
         path: 'commandes/fournisseurs/nouveau',
         component: NouvelleCommandeClientFournisseurComponent,
-        data: {origin: 'fournisseur'}
+        data: {origin: 'fournisseur'},
+        canActivate: [ApplicationGuardService]
       },
 
-      {path: 'categories', component: PageCategorieComponent},
-      {path: 'categories/nouveau', component: NouvelleCategorieComponent},
+      {
+        path: 'categories',
+        component: PageCategorieComponent,
+        canActivate: [ApplicationGuardService]
+      },
+      {
+        path: 'categories/nouveau',
+        component: NouvelleCategorieComponent,
+        canActivate: [ApplicationGuardService]
+      },
 
-      {path: 'utilisateurs', component: PageUtilisateurComponent},
-      {path: 'utilisateurs/nouveau', component: NouvelUtilisateurComponent},
+      {
+        path: 'utilisateurs',
+        component: PageUtilisateurComponent,
+        canActivate: [ApplicationGuardService]
+      },
+      {
+        path: 'utilisateurs/nouveau',
+        component: NouvelUtilisateurComponent,
+        canActivate: [ApplicationGuardService]
+      },
 
-      {path: 'profil', component: PageProfilComponent},
-      {path: 'profil/changermotpasse', component: ChangerMotPasseComponent},
+      {
+        path: 'profil', component: PageProfilComponent,
+        canActivate: [ApplicationGuardService]
+      },
+      {
+        path: 'profil/changermotpasse', component: ChangerMotPasseComponent,
+        canActivate: [ApplicationGuardService]
+      },
 
     ]
   }
