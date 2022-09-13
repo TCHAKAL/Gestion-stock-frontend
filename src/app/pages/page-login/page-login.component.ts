@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {AuthenticationRequest} from "../../../gs-api/src/models/authentication-request";
-import {UserService} from "../../services/user/user.service";
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {UserService} from "../../services/guards/user/user.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-page-login',
@@ -10,22 +10,37 @@ import {Router} from "@angular/router";
 })
 export class PageLoginComponent implements OnInit {
 
-  authenticationRequest:AuthenticationRequest={};
+  loginForm!:FormGroup;
+  errorMessage: string = '';
 
-  constructor(@Inject(UserService) private userService : UserService,
-              private router:Router) { }
-
-  ngOnInit(): void {
+  constructor(private formBuilder:FormBuilder,
+              private userService: UserService,
+              private router: Router) {
   }
 
+  ngOnInit(): void {
+    this.loginForm=this.formBuilder.group({
+      email:[null,Validators.required],
+      motPasse:[null,Validators.required],
+
+    },
+      {
+        updateOn : 'change'
+      });
+  }
+
+  //Il faut ajouter Cross Unblock pour Unblock CORS error dans la phase de developpement
   login() {
-    this.userService.login(this.authenticationRequest)
-      .subscribe(data=>{
-        localStorage.setItem('authenticationResponse',JSON.stringify(data));
-      },error=>{
-      console.log(error);
-      debugger;
-      this.router.navigate(['inscrire']);
-    });
+    console.log(this.loginForm.value)
+    this.userService.login(this.loginForm.value)
+      .subscribe(data => {
+        localStorage.setItem('authenticationResponse', JSON.stringify(data));
+        this.userService.setConnectedUser(data);
+        this.router.navigate(['']);
+      }, (error) => {
+        console.log(error)
+        this.errorMessage = 'Login et / ou mot de passe incorrect';
+        //this.router.navigate(['inscrire']);
+      });
   }
 }

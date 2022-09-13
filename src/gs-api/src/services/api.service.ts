@@ -1234,7 +1234,7 @@ class ApiService extends __BaseService {
     __body = body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `stockiteasy/authentication/authenticate`,
+      this.rootUrl + `/stockiteasy/authentication/authenticate`,
       __body,
       {
         headers: __headers,

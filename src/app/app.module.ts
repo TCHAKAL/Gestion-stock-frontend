@@ -53,7 +53,7 @@ import {DetailUtilisateurComponent} from './pages/utilisateur/detail-utilisateur
 import {NouvelUtilisateurComponent} from './pages/utilisateur/nouvel-utilisateur/nouvel-utilisateur.component';
 import {PageProfilComponent} from './pages/profil/page-profil/page-profil.component';
 import {ChangerMotPasseComponent} from './pages/profil/changer-mot-passe/changer-mot-passe.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
@@ -96,7 +96,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
