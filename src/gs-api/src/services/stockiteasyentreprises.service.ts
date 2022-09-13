@@ -30,10 +30,11 @@ class StockiteasyentreprisesService extends __BaseService {
   /**
    * @return successful operation
    */
-  saveResponse(): __Observable<__StrictHttpResponse<EntrepriseDto>> {
+  saveResponse(entrepriseDto:EntrepriseDto): __Observable<__StrictHttpResponse<EntrepriseDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
+    __body = entrepriseDto;
     let req = new HttpRequest<any>(
       'POST',
       this.rootUrl + `/stockiteasy/entreprises/create`,
@@ -54,8 +55,8 @@ class StockiteasyentreprisesService extends __BaseService {
   /**
    * @return successful operation
    */
-  save(): __Observable<EntrepriseDto> {
-    return this.saveResponse().pipe(
+  save(entrepriseDto:EntrepriseDto): __Observable<EntrepriseDto> {
+    return this.saveResponse(entrepriseDto).pipe(
       __map(_r => _r.body as EntrepriseDto)
     );
   }
@@ -63,7 +64,7 @@ class StockiteasyentreprisesService extends __BaseService {
   /**
    * @return successful operation
    */
-  findByIdResponse(): __Observable<__StrictHttpResponse<EntrepriseDto>> {
+  findByIdResponse(idEntreprise:number): __Observable<__StrictHttpResponse<EntrepriseDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -87,8 +88,8 @@ class StockiteasyentreprisesService extends __BaseService {
   /**
    * @return successful operation
    */
-  findById(): __Observable<EntrepriseDto> {
-    return this.findByIdResponse().pipe(
+  findById(idEntreprise:number): __Observable<EntrepriseDto> {
+    return this.findByIdResponse(idEntreprise).pipe(
       __map(_r => _r.body as EntrepriseDto)
     );
   }
@@ -96,7 +97,7 @@ class StockiteasyentreprisesService extends __BaseService {
   /**
    * @return successful operation
    */
-  findByNomResponse(): __Observable<__StrictHttpResponse<EntrepriseDto>> {
+  findByNomResponse(nomEntreprise:string): __Observable<__StrictHttpResponse<EntrepriseDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -120,8 +121,8 @@ class StockiteasyentreprisesService extends __BaseService {
   /**
    * @return successful operation
    */
-  findByNom(): __Observable<EntrepriseDto> {
-    return this.findByNomResponse().pipe(
+  findByNom(nomEntreprise:string): __Observable<EntrepriseDto> {
+    return this.findByNomResponse(nomEntreprise).pipe(
       __map(_r => _r.body as EntrepriseDto)
     );
   }

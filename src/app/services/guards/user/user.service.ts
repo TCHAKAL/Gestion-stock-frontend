@@ -3,6 +3,7 @@ import {AuthenticationRequest} from "../../../../gs-api/src/models/authenticatio
 import {Observable} from "rxjs";
 import {AuthenticationResponse} from "../../../../gs-api/src/models/authentication-response";
 import {ApiService} from "../../../../gs-api/src/services/api.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -10,21 +11,25 @@ import {ApiService} from "../../../../gs-api/src/services/api.service";
 export class UserService {
 
   constructor(
+    private router: Router,
     private apiService: ApiService
   ) {  }
 
   login(authenticationRequest: AuthenticationRequest):Observable<AuthenticationResponse> {
     return this.apiService.authenticate(authenticationRequest);
-    //   .subscribe(data=>{
-    //     localStorage.setItem('authenticationResponse',JSON.stringify(data));
-    //   },error=>{
-    //   console.log(error);
-    //   this.router.navigate(['inscrire']);
-    // });
   }
 
    setConnectedUser(authenticationResponse: AuthenticationResponse):void{
     localStorage.setItem('connectedUser',JSON.stringify(authenticationResponse));
+  }
+
+  isUserLoggedAndTokenValid():boolean{
+    if(localStorage.getItem('connectedUser')){
+      //TODO vérifier la validité du token
+      return true;
+    }
+    this.router.navigateByUrl('login');
+    return false;
   }
 
 }

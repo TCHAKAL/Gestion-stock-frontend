@@ -4,39 +4,49 @@
       <h2>S'inscrire</h2>
     </div>
     <div class="card-body">
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Nom">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Code fiscal">
-      </div>
-      <div class="mb-3">
-        <input type="email" class="form-control" placeholder="Email">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Adresse 1">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Adresse 2">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Ville">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Code postal">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Pays">
-      </div>
-      <div class="mb-3">
-        <input type="password" class="form-control" placeholder="Mot de passe">
-      </div>
-      <div class="mb-3">
-        <input type="password" class="form-control" placeholder="Confirmer mot de passe">
-      </div>
+      <form [formGroup]="entrepriseForm">
+        <div class="alert alert-danger" *ngIf="errorMsg">
+          <div *ngFor="let msg of errorMsg">{{msg}}</div>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Nom" formControlName="nom">
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Code fiscal" formControlName="codeFiscal">
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Email" formControlName="email">
+        </div>
+        <form [formGroup]="adresseForm">
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Adresse 1" formControlName="adresse1">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Adresse 2" formControlName="adresse2">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Ville" formControlName="ville">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Code postal" formControlName="codePostale">
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Pays" formControlName="pays">
+          </div>
+        </form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Description" formControlName="description">
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Numéro de téléphone"  formControlName="telephone">
+        </div>
+      </form>
+
       <div class="mb-3 d-flex justify-content-between">
         <a [routerLink]="['/login']" class="btn btn-link">Se connecter</a>
-        <button type="button" class="btn btn-primary"><i class="fas fa-check"></i>&nbsp;S'inscrire</button>
+        <button type="button" class="btn btn-primary" (click)="inscrire()">
+          <i class="fas fa-check"></i>&nbsp;S'inscrire
+        </button>
       </div>
     </div>
   </div>

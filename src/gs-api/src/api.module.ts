@@ -40,7 +40,7 @@ import { StockiteasyventesService } from './services/stockiteasyventes.service';
   ],
 })
 export class ApiModule {
-  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders {
+  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders<any> {
     return {
       ngModule: ApiModule,
       providers: [

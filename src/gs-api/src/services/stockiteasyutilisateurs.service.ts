@@ -26,7 +26,7 @@ class StockiteasyutilisateursService extends __BaseService {
    * @param idUtilisateur undefined
    * @return Utlisateur est trouvé
    */
-  findByIdResponse(idUtilisateur: number): __Observable<__StrictHttpResponse<UtilisateurDto>> {
+  findByIdResponse(idFournisseur: number): __Observable<__StrictHttpResponse<UtilisateurDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
