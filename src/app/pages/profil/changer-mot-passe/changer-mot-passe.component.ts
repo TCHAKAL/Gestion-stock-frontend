@@ -20,8 +20,7 @@ export class ChangerMotPasseComponent implements OnInit {
   }
 
   changerMotPasse() {
-    this.categorieService.findByCode('test').subscribe(res=>{
-
+    this.categorieService.findAll().subscribe(res=>{
     })
   }
 }

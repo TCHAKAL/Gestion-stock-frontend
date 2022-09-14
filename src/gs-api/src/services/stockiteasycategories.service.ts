@@ -4,7 +4,7 @@ import { HttpClient, HttpRequest, HttpResponse, HttpHeaders } from '@angular/com
 import { BaseService as __BaseService } from '../base-service';
 import { ApiConfiguration as __Configuration } from '../api-configuration';
 import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-response';
-import { Observable as __Observable } from 'rxjs';
+import {Observable, Observable as __Observable} from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
 import { CategorieDto } from '../../../app/models/categorie-dto';
@@ -162,6 +162,9 @@ class StockiteasycategoriesService extends __BaseService {
         return _r as __StrictHttpResponse<CategorieDto>;
       })
     );
+  }
+  findAll():Observable<CategorieDto[]> {
+    return this.http.get<any>(this.rootUrl + '/stockiteasy/categories/all');
   }
   /**
    * Cette méthode permet de recherhcer une categorie par son ID

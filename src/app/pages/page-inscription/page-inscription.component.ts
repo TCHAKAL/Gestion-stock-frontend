@@ -3,7 +3,7 @@ import {EntrepriseDto} from "../../models/entreprise-dto";
 import {EntrepriseService} from "../../services/entreprise.service";
 import {AdresseDto} from "../../models/adresse-dto";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../services/guards/user/user.service";
+import {UserService} from "../../services/user/user.service";
 import {AuthenticationRequest} from "../../models/authentication-request";
 import {Router} from "@angular/router";
 
@@ -53,7 +53,8 @@ export class PageInscriptionComponent implements OnInit {
           motPasse: 'som3R@ndomP@a$$word'
         }
         this.userService.login(authenticationRequest).subscribe(response=>{
-          this.userService.setConnectedUser(response);
+          this.userService.setAccessToken(response);
+          localStorage.setItem('origin','inscription');
           this.router.navigate(['/profil/changermotpasse']);
         });
         console.log(this.entrepriseDto);
