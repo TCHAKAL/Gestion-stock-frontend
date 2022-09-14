@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {EntrepriseDto} from "../../../gs-api/src/models/entreprise-dto";
+import {EntrepriseDto} from "../../models/entreprise-dto";
 import {EntrepriseService} from "../../services/entreprise.service";
-import {AdresseDto} from "../../../gs-api/src/models/adresse-dto";
+import {AdresseDto} from "../../models/adresse-dto";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/guards/user/user.service";
-import {AuthenticationRequest} from "../../../gs-api/src/models/authentication-request";
+import {AuthenticationRequest} from "../../models/authentication-request";
 import {Router} from "@angular/router";
 
 @Component({

@@ -7,19 +7,19 @@ import {StrictHttpResponse as __StrictHttpResponse} from '../strict-http-respons
 import {Observable as __Observable} from 'rxjs';
 import {map as __map, filter as __filter} from 'rxjs/operators';
 
-import {ArticleDto} from '../models/article-dto';
-import {LigneCommandeFournisseurDto} from '../models/ligne-commande-fournisseur-dto';
-import {LigneVenteDto} from '../models/ligne-vente-dto';
-import {CategorieDto} from '../models/categorie-dto';
-import {CommandeClientDto} from '../models/commande-client-dto';
-import {LigneCommandeClientDto} from '../models/ligne-commande-client-dto';
-import {CommandeFournisseurDto} from '../models/commande-fournisseur-dto';
-import {EntrepriseDto} from '../models/entreprise-dto';
-import {FournisseurDto} from '../models/fournisseur-dto';
-import {MvtStockDto} from '../models/mvt-stock-dto';
-import {UtilisateurDto} from '../models/utilisateur-dto';
-import {AuthenticationResponse} from '../models/authentication-response';
-import {AuthenticationRequest} from '../models/authentication-request';
+import {ArticleDto} from '../../../app/models/article-dto';
+import {LigneCommandeFournisseurDto} from '../../../app/models/ligne-commande-fournisseur-dto';
+import {LigneVenteDto} from '../../../app/models/ligne-vente-dto';
+import {CategorieDto} from '../../../app/models/categorie-dto';
+import {CommandeClientDto} from '../../../app/models/commande-client-dto';
+import {LigneCommandeClientDto} from '../../../app/models/ligne-commande-client-dto';
+import {CommandeFournisseurDto} from '../../../app/models/commande-fournisseur-dto';
+import {EntrepriseDto} from '../../../app/models/entreprise-dto';
+import {FournisseurDto} from '../../../app/models/fournisseur-dto';
+import {MvtStockDto} from '../../../app/models/mvt-stock-dto';
+import {UtilisateurDto} from '../../../app/models/utilisateur-dto';
+import {AuthenticationResponse} from '../../../app/models/authentication-response';
+import {AuthenticationRequest} from '../../../app/models/authentication-request';
 
 @Injectable({
   providedIn: 'root',

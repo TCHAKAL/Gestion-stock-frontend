@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {EntrepriseDto} from "../../gs-api/src/models/entreprise-dto";
+import {EntrepriseDto} from "../models/entreprise-dto";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 

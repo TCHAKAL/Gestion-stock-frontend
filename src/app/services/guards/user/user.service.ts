@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {AuthenticationRequest} from "../../../../gs-api/src/models/authentication-request";
+import {AuthenticationRequest} from "../../../models/authentication-request";
 import {Observable} from "rxjs";
-import {AuthenticationResponse} from "../../../../gs-api/src/models/authentication-response";
+import {AuthenticationResponse} from "../../../models/authentication-response";
 import {ApiService} from "../../../../gs-api/src/services/api.service";
 import {Router} from "@angular/router";
 

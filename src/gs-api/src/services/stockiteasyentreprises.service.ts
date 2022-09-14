@@ -7,8 +7,8 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { EntrepriseDto } from '../models/entreprise-dto';
-import { FournisseurDto } from '../models/fournisseur-dto';
+import { EntrepriseDto } from '../../../app/models/entreprise-dto';
+import { FournisseurDto } from '../../../app/models/fournisseur-dto';
 @Injectable({
   providedIn: 'root',
 })
