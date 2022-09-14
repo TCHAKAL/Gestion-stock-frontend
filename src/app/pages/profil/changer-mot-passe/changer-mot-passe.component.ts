@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {StockiteasycategoriesService} from "../../../../gs-api/src/services/stockiteasycategories.service";
 
 @Component({
   selector: 'app-changer-mot-passe',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class ChangerMotPasseComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router , private categorieService:StockiteasycategoriesService) {
   }
 
   ngOnInit(): void {
@@ -18,4 +19,9 @@ export class ChangerMotPasseComponent implements OnInit {
     this.router.navigate(['profil']);
   }
 
+  changerMotPasse() {
+    this.categorieService.findByCode('test').subscribe(res=>{
+
+    })
+  }
 }

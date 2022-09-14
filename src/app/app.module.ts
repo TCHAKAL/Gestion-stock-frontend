@@ -54,7 +54,8 @@ import {NouvelUtilisateurComponent} from './pages/utilisateur/nouvel-utilisateur
 import {PageProfilComponent} from './pages/profil/page-profil/page-profil.component';
 import {ChangerMotPasseComponent} from './pages/profil/changer-mot-passe/changer-mot-passe.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HttpInterceptorService} from "./services/interceptor/http-interceptor-service";
 
 @NgModule({
   declarations: [
@@ -99,7 +100,11 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
