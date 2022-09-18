@@ -47,7 +47,6 @@ export class PageLoginComponent implements OnInit {
   getUserByEmail() {
     this.userService.getUserByEmail(this.loginForm.value.email).subscribe(utilisateur => {
       this.userService.setUtilisateur(utilisateur);
-      console.log(utilisateur);
     });
   }
 }

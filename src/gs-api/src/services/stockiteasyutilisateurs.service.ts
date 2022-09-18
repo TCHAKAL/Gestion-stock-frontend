@@ -22,6 +22,7 @@ class StockiteasyutilisateursService extends __BaseService {
   }
 
   findByEmail(email:string):Observable<UtilisateurDto> {
+    console.log(this.rootUrl + '/stockiteasy/utilisateurs/findbyemail/'+email);
     return this.http.get<UtilisateurDto>(this.rootUrl + '/stockiteasy/utilisateurs/findbyemail/'+email);
   }
 

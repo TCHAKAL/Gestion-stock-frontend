@@ -49,7 +49,9 @@ export class UserService {
 
   getConnectedUser():UtilisateurDto{
     if(localStorage.getItem('utilisateur')){
-      return JSON.parse('utilisateur');
+      let utilisateur = localStorage.getItem('utilisateur');
+      // @ts-ignore
+      return JSON.parse(utilisateur);
     }
     return {};
   }
